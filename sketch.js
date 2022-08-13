@@ -1,7 +1,7 @@
 function createSquare(){
     const newDiv = document.createElement("div");
-    const currentDiv = document.getElementById("container");
-    document.body.insertAfter(newDiv, currentDiv);
+    newDiv.classList.add("square");
+    document.getElementById('container').appendChild(newDiv);  
 }
 
 function createGrid(){
@@ -9,3 +9,5 @@ function createGrid(){
         createSquare();
     }
 }
+
+createGrid();

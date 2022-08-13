@@ -1,0 +1,14 @@
+.container {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-around;
+    padding: 32px;
+    gap:5px;
+}
+
+.square {
+    flex-basis: 16%;
+    border: 1px solid #eee;
+    box-shadow: 2px 4px 16px rgba(0,0,0,.06);
+    border-radius: 4px; 
+}
