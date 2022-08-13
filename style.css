@@ -1,4 +1,4 @@
-.body {
+body {
     max-width: 1335px;
     margin: 0 auto;
 }
@@ -7,14 +7,15 @@
     display: flex;
     flex-flow: row wrap;
     justify-content: flex-start;
+    align-items: center;
+    padding: 50px;
 }
 
 .square {
-    flex-basis: 20%;
-    border: 1px solid #eee;
-    box-shadow: 2px 4px 16px rgba(0,0,0,.06);
+    flex-basis: 5.6%;
+    border: 1px solid black;
     border-radius: 4px; 
     position: relative;
     box-sizing: border-box;
-    padding: 5px
+    padding: 20px;
 }

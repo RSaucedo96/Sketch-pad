@@ -5,7 +5,7 @@ function createSquare(){
 }
 
 function createGrid(){
-    for (let index = 0; index < 15; index++) {
+    for (let index = 0; index < 255; index++) {
         createSquare();
     }
 }
