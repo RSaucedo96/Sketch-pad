@@ -15,17 +15,15 @@ function createGrid(n){
 }
 
 function resetBoard(){
-    const resetButton= document.getElementsByName("button");
-    resetButton.addEventListener("onclick", function (event) {
-        let qtty = prompt("Please enter the number of lines:");
-        let text;
-        if (qtty == null || qtty == "") {
-          text = "User cancelled the prompt.";
-        } 
-        else {
+    let qtty = prompt("Please enter the number of lines:");
+    let text;
+    if (qtty == null || qtty == "") {
+        text = "User cancelled the prompt.";
+    } 
+    else {
+          n=qtty*qtty;
           createGrid(n);
-        } 
-    })
+    } 
 }
 
 let amount = prompt("Please enter the number of lines:");
@@ -37,3 +35,5 @@ else {
     realamount=amount * amount;
     createGrid(realamount);
 }
+var button = document.getElementById('btn');
+button.addEventListener('click', resetBoard, true);
