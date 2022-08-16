@@ -21,8 +21,10 @@ function resetBoard(){
         text = "User cancelled the prompt.";
     } 
     else {
-          n=qtty*qtty;
-          createGrid(n);
+        n=qtty * qtty;
+        createGrid(n);
+        const deleteSquare=document.querySelector("square");
+        deleteSquare.classList.remove("hoverSquare");
     } 
 }
 
@@ -36,4 +38,4 @@ else {
     createGrid(realamount);
 }
 var button = document.getElementById('btn');
-button.addEventListener('click', resetBoard, true);
+button.addEventListener('click', resetBoard);
