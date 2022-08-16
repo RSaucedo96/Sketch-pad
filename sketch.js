@@ -14,4 +14,9 @@ function createGrid(){
     }
 }
 
+function resetBoard(){
+    const resetButton= document.getElementsByName("button")
+    resetButton.addEventListener("onclick", function)
+}
+
 createGrid();
