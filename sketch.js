@@ -8,15 +8,32 @@ function createSquare(){
     //   newDiv.classList.remove('hoverSquare')}); this 2 lines make only highlites the one the mouse is over
 }
 
-function createGrid(){
-    for (let index = 0; index < 255; index++) {
+function createGrid(n){
+    for (let index = 0; index < n; index++) {
         createSquare();
     }
 }
 
 function resetBoard(){
-    const resetButton= document.getElementsByName("button")
-    resetButton.addEventListener("onclick", function)
+    const resetButton= document.getElementsByName("button");
+    resetButton.addEventListener("onclick", function (event) {
+        let qtty = prompt("Please enter the number of lines:");
+        let text;
+        if (qtty == null || qtty == "") {
+          text = "User cancelled the prompt.";
+        } 
+        else {
+          createGrid(n);
+        } 
+    })
 }
 
-createGrid();
+let amount = prompt("Please enter the number of lines:");
+let text;
+if (amount == null || amount == "") {
+    text = "User cancelled the prompt.";
+} 
+else {
+    realamount=amount * amount;
+    createGrid(realamount);
+}
