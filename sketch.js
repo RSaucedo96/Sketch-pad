@@ -4,8 +4,8 @@ function createSquare(){
     document.getElementById('container').appendChild(newDiv);
     newDiv.addEventListener("mouseover", function ( event ) {
         newDiv.classList.add('hoverSquare')});
-    newDiv.addEventListener("mouseout" , function( event ) {
-        squares.classList.remove('hoverSquare')});
+    //newDiv.addEventListener("mouseout" , function( event ) {
+    //   newDiv.classList.remove('hoverSquare')}); this 2 lines make only highlites the one the mouse is over
 }
 
 function createGrid(){
