@@ -1,17 +1,27 @@
-function createSquare(){
-    const newDiv = document.createElement("div");
-    newDiv.classList.add("square");
-    document.getElementById('container').appendChild(newDiv);
-    newDiv.addEventListener("mouseover", function ( event ) {
-        newDiv.classList.add('hoverSquare')});
-    //newDiv.addEventListener("mouseout" , function( event ) {
-    //   newDiv.classList.remove('hoverSquare')}); this 2 lines make only highlites the one the mouse is over
+
+function createLine(){
+    const newLine = document.createElement("div");
+    newLine.classList.add("line");
+    document.getElementById("container").appendChild(newLine);
 }
 
 function createGrid(n){
     for (let index = 0; index < n; index++) {
-        createSquare();
+        createLine();
     }
+    const lines = document.getElementsByClassName("line");
+    for (let i = 0; i < n; i++) {
+        const line = lines[i];
+        for (let j = 0; j < n; j++) {
+            const newSquare = document.createElement("div");
+            newSquare.classList.add("square");
+            newSquare.addEventListener("mouseover", function ( event ) {
+                newSquare.classList.add('hoverSquare')
+            });
+            line.appendChild(newSquare);
+        };
+    }
+
 }
 
 function resetBoard(){
@@ -23,8 +33,7 @@ function resetBoard(){
     else {
         var myDiv = document.getElementById("container");
         myDiv.innerHTML = ""
-        n = qtty * qtty;
-        createGrid(n);
+        createGrid(qtty);
     } 
 }
 
@@ -34,8 +43,7 @@ if (amount == null || amount == "") {
     text = "User cancelled the prompt.";
 } 
 else {
-    realamount = amount * amount;
-    createGrid(realamount);
+    createGrid(amount);
 }
 var button = document.getElementById('btn');
 button.addEventListener('click', resetBoard);

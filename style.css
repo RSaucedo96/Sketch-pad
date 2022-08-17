@@ -1,18 +1,24 @@
 body {
     max-width: 1335px;
+    max-height: 1335px;
     margin: 0 auto;
 }
 
 .container {
     display: flex;
-    flex-flow: row wrap;
+    flex-direction: column;
     justify-content: flex-start;
     align-items: center;
     padding: 50px;
 }
+.line {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
 
 .square {
-    flex-basis: 6%;
+    flex-basis: auto;
     border: 1px solid black;
     border-radius: 4px; 
     position: relative;
@@ -20,6 +26,7 @@ body {
     padding: 20px;
     background-color: white;
 }
+
 
 .hoverSquare{
     background-color: red;
