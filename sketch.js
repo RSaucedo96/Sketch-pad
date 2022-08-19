@@ -1,27 +1,38 @@
-
-function createLine(){
-    const newLine = document.createElement("div");
-    newLine.classList.add("line");
-    document.getElementById("container").appendChild(newLine);
+const cleanScreen=document.getElementById('cleanbtn')
+cleanScreen.addEventListener('click', resetBoard);
+let amount = prompt("Please enter the number of lines:");
+let text;
+var clicked = false;
+if (amount == null || amount == "") {
+    text = "User cancelled the prompt.";
+} 
+else {
+    createGrid(amount);
 }
 
-function createGrid(n){
-    for (let index = 0; index < n; index++) {
+function createGrid(){
+    for (let index = 0; index < amount; index++) {
         createLine();
     }
     const lines = document.getElementsByClassName("line");
-    for (let i = 0; i < n; i++) {
+    for (let i = 0; i < amount; i++) {
         const line = lines[i];
-        for (let j = 0; j < n; j++) {
+        for (let j = 0; j < amount; j++) {
             const newSquare = document.createElement("div");
             newSquare.classList.add("square");
-            newSquare.addEventListener("mouseover", function ( event ) {
+            newSquare.addEventListener("mouseover", function ( Write ) {
                 newSquare.classList.add('hoverSquare')
             });
             line.appendChild(newSquare);
         };
     }
 
+}
+
+function createLine(){
+    const newLine = document.createElement("div");
+    newLine.classList.add("line");
+    document.getElementById("container").appendChild(newLine);
 }
 
 function resetBoard(){
@@ -37,13 +48,26 @@ function resetBoard(){
     } 
 }
 
-let amount = prompt("Please enter the number of lines:");
-let text;
-if (amount == null || amount == "") {
-    text = "User cancelled the prompt.";
-} 
-else {
-    createGrid(amount);
+function eraser() {
+    var eraserToggle = document.getElementById("eraserToggle");
+    const eraserTool = document.getElementsByClassName("square");
+    if (eraserToggle.value == "Erase") {
+        eraserToggle.value="Write";
+        for (let i = 0; i < amount; i++) {
+            eraserTool[i].addEventListener("mouseover", function ( event ) {
+                eraserTool[i].classList.remove('hoverSquare')});   
+            }
+    }
+    else if (eraserToggle.value == "Write") {
+        eraserToggle.value="Erase";
+        for (let j = 0; j < amount; j++) {
+            eraserTool[j].addEventListener("mouseover", function ( event ) {
+                eraserTool[j].classList.add('hoverSquare')});   
+            }
+        }
 }
-var button = document.getElementById('btn');
-button.addEventListener('click', resetBoard);
+
+
+
+
+
