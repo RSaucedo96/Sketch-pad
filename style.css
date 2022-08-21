@@ -22,12 +22,14 @@ body {
     width: 600px;
 }
 
-.square {
+.square,
+.off {
     flex: 1 0 auto;
     background-color: white;
 }
 
 
-.hoverSquare{
+.hoverSquare,
+.on {
     background-color: red;
 }

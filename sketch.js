@@ -1,16 +1,14 @@
-const cleanScreen=document.getElementById('cleanbtn')
+const DEFAULT_BOARD_SIZE = 16;
+var currentBoardSize=DEFAULT_BOARD_SIZE;
+const cleanScreen = document.getElementById('cleanbtn');
+const eraserToggle = document.getElementById('eraserbtn');
+const board = document.getElementById('container');
+const squares = document.getElementsByClassName('squares');
 cleanScreen.addEventListener('click', resetBoard);
-let amount = prompt("Please enter the number of lines:");
-let text;
-var clicked = false;
-if (amount == null || amount == "") {
-    text = "User cancelled the prompt.";
-} 
-else {
-    createGrid(amount);
-}
+eraserToggle.addEventListener('click', eraser);
+createGrid(DEFAULT_BOARD_SIZE);
 
-function createGrid(){
+function createGrid(amount){
     for (let index = 0; index < amount; index++) {
         createLine();
     }
@@ -32,40 +30,43 @@ function createGrid(){
 function createLine(){
     const newLine = document.createElement("div");
     newLine.classList.add("line");
-    document.getElementById("container").appendChild(newLine);
+    board.appendChild(newLine);
 }
 
 function resetBoard(){
-    let qtty = prompt("Please enter the number of lines:");
+    currentBoardSize = prompt("Please enter the number of lines:");
     let text;
-    if (qtty == null || qtty == "") {
+    if (currentBoardSize == null || currentBoardSize == "") {
         text = "User cancelled the prompt.";
     } 
     else {
-        var myDiv = document.getElementById("container");
-        myDiv.innerHTML = ""
-        createGrid(qtty);
+        board.innerHTML = "";
+        createGrid(currentBoardSize);
     } 
 }
 
-function eraser() {
-    var eraserToggle = document.getElementById("eraserToggle");
-    const eraserTool = document.getElementsByClassName("square");
-    if (eraserToggle.value == "Erase") {
-        eraserToggle.value="Write";
-        for (let i = 0; i < amount; i++) {
-            eraserTool[i].addEventListener("mouseover", function ( event ) {
-                eraserTool[i].classList.remove('hoverSquare')});   
-            }
+function eraser(currentBoardSize) {
+    if (eraserToggle.classList.contains("off")){
+        eraserToggle.classList.remove("off");
+        eraserToggle.classList.add("on");
+        document.querySelectorAll('.square').forEach(item => {
+            item.addEventListener('mouseover', event => {
+                item.classList.remove('hoverSquare');
+            })
+        })
     }
-    else if (eraserToggle.value == "Write") {
-        eraserToggle.value="Erase";
-        for (let j = 0; j < amount; j++) {
-            eraserTool[j].addEventListener("mouseover", function ( event ) {
-                eraserTool[j].classList.add('hoverSquare')});   
-            }
-        }
+    else if (eraserToggle.classList.contains("on")){
+        eraserToggle.classList.remove("on");
+        eraserToggle.classList.add("off");
+        document.querySelectorAll('.square').forEach(item => {
+            item.addEventListener('mouseover', event => {
+                item.classList.add('hoverSquare');
+            })
+        })
+    }
 }
+
+
 
 
 
